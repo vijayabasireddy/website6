@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Delivery - Cart & Payment</title>
+
+  <!-- Custom CSS link -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts link -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Main container -->
+  <main class="container">
+
+    <!-- Heading -->
+    <h1 class="heading">
+      <ion-icon name="cart-outline"></ion-icon> Your Orders
+    </h1>
+
+    <div class="item-flex">
+
+      <!-- Cart Section -->
+      <section class="cart">
+
+        <div class="cart-item-box">
+          <h2 class="section-heading">Order Summary</h2>
+
+          <!-- First Product Card -->
+          <div class="product-card">
+            <div class="card">
+              <div class="img-box">
+                <img src="pizza.jpg" alt="Pizza" width="80px" class="product-img">
+              </div>
+              <div class="detail">
+                <h4 class="product-name">Margherita Pizza</h4>
+                <div class="wrapper">
+                  <div class="product-qty">
+                    <button id="decrement1" class="quantity-btn">-</button>
+                    <span id="quantity1">1</span>
+                    <button id="increment1" class="quantity-btn">+</button>
+                  </div>
+                  <div class="price">
+                    ₹ <span id="price1">250.00</span>
+                  </div>
+                </div>
+              </div>
+              <button class="product-close-btn">
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Second Product Card -->
+          <div class="product-card">
+            <div class="card">
+              <div class="img-box">
+                <img src="burger.jpg" alt="Burger" width="80px" class="product-img">
+              </div>
+              <div class="detail">
+                <h4 class="product-name">Classic Burger</h4>
+                <div class="wrapper">
+                  <div class="product-qty">
+                    <button id="decrement2" class="quantity-btn">-</button>
+                    <span id="quantity2">1</span>
+                    <button id="increment2" class="quantity-btn">+</button>
+                  </div>
+                  <div class="price">
+                    ₹ <span id="price2">150.00</span>
+                  </div>
+                </div>
+              </div>
+              <button class="product-close-btn">
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Order Summary Totals -->
+          <div class="wrapper">
+            <div class="amount">
+              <div class="subtotal">
+                <span>Subtotal</span> <span>₹ <span id="subtotal">400.00</span></span>
+              </div>
+              <div class="tax">
+                <span>Tax</span> <span>₹ <span id="tax">20.00</span></span>
+              </div>
+              <div class="shipping">
+                <span>Delivery Fee</span> <span>₹ <span id="delivery">30.00</span></span>
+              </div>
+              <div class="total">
+                <span>Total</span> <span>₹ <span id="total">450.00</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Payment Section -->
+      <section class="checkout">
+        <h2 class="section-heading">Payment Details</h2>
+
+        <div class="payment-form">
+          <div class="payment-method">
+            <button class="method selected">
+              <ion-icon name="card"></ion-icon>
+              <span>Credit Card</span>
+              <ion-icon class="checkmark fill" name="checkmark-circle"></ion-icon>
+            </button>
+            <button class="method">
+              <ion-icon name="logo-paypal"></ion-icon>
+              <span>UPI/Wallet</span>
+              <ion-icon class="checkmark" name="checkmark-circle-outline"></ion-icon>
+            </button>
+          </div>
+
+          <form action="#">
+            <div class="cardholder-name">
+              <label for="cardholder-name" class="label-default">Cardholder name</label>
+              <input type="text" name="cardholder-name" id="cardholder-name" class="input-default">
+            </div>
+            <div class="card-number">
+              <label for="card-number" class="label-default">Card number</label>
+              <input type="number" name="card-number" id="card-number" class="input-default">
+            </div>
+            <div class="input-flex">
+              <div class="expire-date">
+                <label for="expire-date" class="label-default">Expiration date</label>
+                <div class="input-flex">
+                  <input type="number" name="month" id="expire-month" placeholder="MM" min="1" max="12" class="input-default"> /
+                  <input type="number" name="year" id="expire-year" placeholder="YY" min="21" max="30" class="input-default">
+                </div>
+              </div>
+              <div class="cvv">
+                <label for="cvv" class="label-default">CVV</label>
+                <input type="number" name="cvv" id="cvv" class="input-default">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <button class="btn btn-primary">
+          <b>Pay</b> ₹ <span id="payAmount">450.00</span>
+        </button>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script>
+    const decrement1 = document.getElementById('decrement1');
+    const increment1 = document.getElementById('increment1');
+    const quantity1 = document.getElementById('quantity1');
+    const price1 = document.getElementById('price1');
+
+    const decrement2 = document.getElementById('decrement2');
+    const increment2 = document.getElementById('increment2');
+    const quantity2 = document.getElementById('quantity2');
+    const price2 = document.getElementById('price2');
+
+    const subtotal = document.getElementById('subtotal');
+    const tax = document.getElementById('tax');
+    const delivery = document.getElementById('delivery');
+    const total = document.getElementById('total');
+    const payAmount = document.getElementById('payAmount');
+
+    const item1Price = 250;
+    const item2Price = 150;
+
+    function updateTotals() {
+      const qty1 = parseInt(quantity1.textContent);
+      const qty2 = parseInt(quantity2.textContent);
+      const subtotalValue = (qty1 * item1Price) + (qty2 * item2Price);
+      const taxValue = subtotalValue * 0.05; // Example: 5% tax
+      const deliveryValue = 30; // Example delivery fee
+      const totalValue = subtotalValue + taxValue + deliveryValue;
+
+      subtotal.textContent = subtotalValue.toFixed(2);
+      tax.textContent = taxValue.toFixed(2);
+      delivery.textContent = deliveryValue.toFixed(2);
+      total.textContent = totalValue.toFixed(2);
+      payAmount.textContent = totalValue.toFixed(2);
+    }
+
+    decrement1.addEventListener('click', () => {
+      let qty = parseInt(quantity1.textContent);
+      if (qty > 1) {
+        qty--;
+        quantity1.textContent = qty;
+        updateTotals();
+      }
+    });
+
+    increment1.addEventListener('click', () => {
+      let qty = parseInt(quantity1.textContent);
+      qty++;
+      quantity1.textContent = qty;
+      updateTotals();
+    });
+
+    decrement2.addEventListener('click', () => {
+      let qty = parseInt(quantity2.textContent);
+      if (qty > 1) {
+        qty--;
+        quantity2.textContent = qty;
+        updateTotals();
+      }
+    });
+
+    increment2.addEventListener('click', () => {
+      let qty = parseInt(quantity2.textContent);
+      qty++;
+      quantity2.textContent = qty;
+      updateTotals();
+    });
+  </script>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>Return to <a href="index.html">Home Page</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+  

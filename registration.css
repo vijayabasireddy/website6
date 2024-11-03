@@ -1,0 +1,131 @@
+/* Registration and Login Forms */
+header {
+    background-color: #ff6347;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+    font-size: 2.5rem;
+    color: white;
+}
+body {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffeb3b;
+}
+
+
+form {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color:transparent;
+    box-shadow: 0 4px 10px rgba(216, 16, 16, 0.93);
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    background-color: #ff6347;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #e55337;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 30px;
+    color: #ff6347;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-details {
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+.contact-details p {
+    font-size: 18px;
+    color: #333;
+}
+.offers-section {
+    text-align: center;
+}
+
+.offers-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.offer-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 45%;
+    max-width: 400px;
+}
+
+.offer-item h3 {
+    margin: 10px 0;
+}
+
+.offer-item p {
+    margin: 10px 0;
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
